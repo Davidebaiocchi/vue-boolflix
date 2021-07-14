@@ -1,13 +1,27 @@
 <template>
   <div class="card">
     <div class="cover">
-      <img :src="imgBaseURL + imgBaseDimension + serie.poster_path" :alt="'Copertina ' + serie.name">
+      <img v-if="serie.poster_path == null" src="@/assets/img/images.jpg" alt="cover">
+      <img :src="imgBaseURL + imgBaseDimension + serie.poster_path" alt="">
     </div>
     <div class="description">
       <span class="titolo"> {{ serie.name }} </span>  <br>
       <span class="titolo-or"> '{{ serie.original_name }}' </span> <br>
-      <span> Voto: {{ serie.vote_average }} </span> <br>
-      <span class="lingua"> Lingua: <img :src="getImgUrl(language)" v-bind:alt="language"> </span> 
+      <span class="lingua"><img :src="getImgUrl(language)" v-bind:alt="language">  
+      <!-- stelle piene -->
+      <i class="piene fas fa-star"
+      v-for="(star,i) in loadStars(serie.vote_average)" :key="i"
+      ></i>
+
+      <!-- stelle vuote -->
+      <i class="far fa-star"
+      v-for="(star,i) in loadEmptyStars(serie.vote_average)" :key="i"
+      ></i></span> 
+
+      <div class="riassunto">
+        <span v-if="serie.overview === ''"></span>
+        <span v-else> {{ serie.overview }} </span>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +44,12 @@ export default {
       catch (none) {
         return 'none'
       }  
+    },
+    loadStars(vote){
+      return Math.round(vote / 2)
+    },
+    loadEmptyStars(vote){
+      return 5 - (Math.round(vote / 2))
     }
   }
 }
@@ -43,10 +63,6 @@ export default {
     margin-bottom: 50px;
     position: relative;
     cursor: pointer;
-  }
-
-  img {
-    height: 15px;
   }
 
   .cover{
@@ -69,7 +85,7 @@ export default {
 
   .card:hover .description {
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.911);
+    background-color: rgba(0, 0, 0, 0.931);
     height: 100%;
     width: 100%;
     text-transform: uppercase;
@@ -77,11 +93,32 @@ export default {
   }
 
   .titolo {
-    font-size: 40px;
+    font-size: 30px;
     color: crimson;
   }
 
-  .titolo-or, .lingua {
-    font-size: 20px;
+  .titolo-or, {
+    font-size: 16px;
   }
+
+  .lingua img {
+    margin-right: 40px;
+    height: 25px;
+    margin-top: 30px;
+    position: relative;
+    top: 5px;
+  }
+
+  .piene {
+    color: gold;
+  }
+
+  .riassunto {
+    overflow-y: scroll;
+    height: 200px;
+    margin-top: 40px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
 </style> 
