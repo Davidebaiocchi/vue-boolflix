@@ -4,10 +4,10 @@
       <img :src="imgBaseURL + imgBaseDimension + film.backdrop_path" :alt="'Copertina ' + film.title">
     </div>
     <div class="description">
-      Titolo = {{film.title}} <br>
-      Titolo originale = {{film.original_title}} <br>
-      Lingua = <img :src="getImgUrl(language)" v-bind:alt="language"> <br>
-      Voto = {{film.vote_average}} <br>
+      <span> {{film.title}} </span> <br>
+      <span> '{{film.original_title}}' </span> <br>
+      Lingua = <span> <img :src="getImgUrl(language)" v-bind:alt="language"> </span> <br>
+      Voto = <span> {{film.vote_average}} </span> <br>
     </div> 
   </div>
 </template>
