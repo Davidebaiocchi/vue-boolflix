@@ -4,6 +4,14 @@
       <h1>
         Boolflix
       </h1>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>Film</li>
+          <li>Serie Tv</li>
+          <li>Consigliati</li>
+        </ul>
+      </nav>
     </div>
 
     <div class="right-section">
@@ -43,6 +51,10 @@ export default {
     .left-section{
       color: red;
       font-size: 25px;
+      width: 50%;
+      display: flex;
+      height: 80px;
+      line-height: 80px;
     }
     .right-section{
       form{
@@ -66,6 +78,21 @@ export default {
           text-align: center;
         }
       }
+    }
+    ul {
+      margin-left: 100px;
+      list-style: none;
+    }
+    li {
+      display: inline-block;
+      margin-right: 30px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    li:hover {
+      scale: 1.2;
+      color: rgb(255, 255, 255);
     }
   }
 </style>

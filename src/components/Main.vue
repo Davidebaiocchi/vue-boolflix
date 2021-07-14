@@ -3,21 +3,19 @@
     <div class="container">
 
       <div class="Cards">
-
         <CardSerieTv 
-        v-for="(serie, i) in serieArray"
-        :key="i"
+        v-for="(serie, index) in serieArray"
+        :key="index"
         :serie="serie"
         :imgBaseURL="imgBaseURL"
         :imgBaseDimension="imgBaseDimension"/>
 
         <CardFilm 
-        v-for="(film, i) in filmArray"
-        :key="i"
+        v-for="(film, index) in filmArray"
+        :key="index"
         :film="film"
         :imgBaseURL="imgBaseURL"
         :imgBaseDimension="imgBaseDimension"/>
-
       </div>
     </div>
   </main>
