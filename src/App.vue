@@ -2,6 +2,7 @@
   <div id="app">
     <Header @startTest="searchInAPI"/>
     <Main 
+    :defaultArray="defaultArray"
     :filmArray="filmArray" 
     :serieArray="serieArray" 
     :imgBaseURL="imgBaseURL" 
@@ -23,12 +24,22 @@ export default {
   },
   data(){
     return{
+      apiUrlDefault : 'https://api.themoviedb.org/3/movie/603/credits?',
       apiURLFilm : 'https://api.themoviedb.org/3/search/movie?',
-      apiURLSerie : 'https://api.themoviedb.org/3/search/tv?',
+      apiURLSerie : 'https://api.themoviedb.org/3/trending/all/week?',
+
+      // lista con film
       filmArray : [],
+
+      // lista serie tv
       serieArray : [],
+
+      // visione di default
+      defaultView: [],
       imgBaseURL : 'https://image.tmdb.org/t/p/',
       imgBaseDimension : 'original',
+      
+      // ciò che cerca l'utente
       searchText : ''
     }
     
