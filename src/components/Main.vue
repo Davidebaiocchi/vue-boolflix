@@ -1,21 +1,22 @@
 <template>
   <main>
     <div class="container">
-
       <div class="Cards">
-        <CardSerieTv 
-        v-for="(serie, index) in serieArray"
-        :key="index"
-        :serie="serie"
-        :imgBaseURL="imgBaseURL"
-        :imgBaseDimension="imgBaseDimension"/>
+        <div class="container" v-if="filmArray.lenght !==0 && serieArray.lenght !==0">
+          <CardSerieTv 
+          v-for="(serie, index) in serieArray"
+          :key="index"
+          :serie="serie"
+          :imgBaseURL="imgBaseURL"
+          :imgBaseDimension="imgBaseDimension"/>
 
-        <CardFilm 
-        v-for="(film, index) in filmArray"
-        :key="index"
-        :film="film"
-        :imgBaseURL="imgBaseURL"
-        :imgBaseDimension="imgBaseDimension"/>
+          <CardFilm 
+          v-for="(film, index) in filmArray"
+          :key="index"
+          :film="film"
+          :imgBaseURL="imgBaseURL"
+          :imgBaseDimension="imgBaseDimension"/>
+        </div> 
       </div>
     </div>
   </main>
@@ -49,6 +50,11 @@ export default {
       flex-wrap: wrap;
       padding-left: 30px;
       width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 </style>
