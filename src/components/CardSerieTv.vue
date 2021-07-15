@@ -6,7 +6,7 @@
     </div>
     <div class="description">
       <span class="titolo"> {{ serie.name }} </span>  <br>
-      <span class="titolo-or"> '{{ serie.original_name }}' </span> <br>
+      <span v-if="serie.name !== serie.original_name"  class="titolo-or"> '{{ serie.original_name }}' </span> <br>
       <span class="lingua"><img :src="getImgUrl(language)" v-bind:alt="language">  
       <!-- stelle piene -->
       <i class="piene fas fa-star"
