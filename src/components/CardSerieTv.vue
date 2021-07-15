@@ -1,37 +1,35 @@
 <template>
 
   <div class="card">
-
-    <!-- copertina card -->
-    <div class="cover">
-      <img v-if="serie.poster_path == null" src="@/assets/img/images.jpg" alt="cover">
-      <img v-else :src="imgBaseURL + imgBaseDimension + serie.poster_path" alt="">
-    </div>
-
-    <!-- descrizione card -->
-    <div class="description">
-      <span class="titolo"> {{ serie.name }} </span>  <br>
-      <span v-if="serie.name !== serie.original_name"  class="titolo-or"> '{{ serie.original_name }}' </span> <br>
-      <span class="lingua"><img :src="getImgUrl(language)" v-bind:alt="language">  
-      
-      <!-- stelle piene -->
-      <i class="piene fas fa-star"
-      v-for="(star, index) in stars(serie.vote_average)" :key="index"
-      ></i>
-
-      <!-- stelle vuote -->
-      <i class="far fa-star"
-      v-for="(star, index) in whiteStars(serie.vote_average)" :key="index"
-      ></i></span> 
-
-      <div class="riassunto">
-        <span v-if="serie.overview === ''"></span>
-        <span v-else> {{ serie.overview }} </span>
+      <!-- copertina card -->
+      <div class="cover">
+        <img v-if="serie.poster_path == null" src="@/assets/img/images.jpg" alt="cover">
+        <img v-else :src="imgBaseURL + imgBaseDimension + serie.poster_path" alt="">
       </div>
-      <!-- fine descrizione card -->
+      <!-- descrizione card -->
+      <div class="description">
+        <span class="titolo"> {{ serie.name }} </span>  <br>
+        <span v-if="serie.name !== serie.original_name"  class="titolo-or"> '{{ serie.original_name }}' </span> <br>
+        <span class="lingua"><img :src="getImgUrl(language)" v-bind:alt="language">  
+        
+        <!-- stelle piene -->
+        <i class="piene fas fa-star"
+        v-for="(star, index) in stars(serie.vote_average)" :key="index"
+        ></i>
 
+        <!-- stelle vuote -->
+        <i class="far fa-star"
+        v-for="(star, index) in whiteStars(serie.vote_average)" :key="index"
+        ></i></span> 
+
+        <div class="riassunto">
+          <span v-if="serie.overview === ''"></span>
+          <span v-else> {{ serie.overview }} </span>
+        </div>
+        <!-- fine descrizione card -->
+
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -98,7 +96,7 @@ export default {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.931);
     height: 100%;
-    width: 100%;
+    width: 301px;
     text-transform: uppercase;
     font-weight: 900;
   }

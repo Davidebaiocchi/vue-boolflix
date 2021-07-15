@@ -27,6 +27,7 @@ export default {
       apiURLSerie : 'https://api.themoviedb.org/3/search/tv?',
       filmArray : [],
       serieArray : [],
+      defaultView : [],
       imgBaseURL : 'https://image.tmdb.org/t/p/',
       imgBaseDimension : 'original',
       searchText : ''
@@ -81,6 +82,15 @@ export default {
         .catch((error) => {
           console.log('Errore : ' + error);
         });
+    },
+    mounted() {
+    // questa chiamata mostra la vista di default 
+      axios
+      .get('https://api.themoviedb.org/3/trending/all/week?api_key=f019de624b3557ff30c3068e6b218a54')
+      .then((response) => {
+        const result = response.data.results;
+        this.defaultView = result;
+      })            
     }
   }
 }
