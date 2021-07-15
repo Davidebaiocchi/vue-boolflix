@@ -1,9 +1,14 @@
 <template>
   <header>
+
     <div class="left-section">
+
+      <!-- logo -->
       <h1>
         Boolflix
       </h1>
+
+      <!-- menù -->
       <nav>
         <ul>
           <li>Home</li>

@@ -39,6 +39,7 @@ export default {
       this.searchSerie(inputText);
     },
 
+    // funzione per cercare i film richiesti dall'utente e aggiungerli in un array che poi verrà stampato
     searchFilm(searchText){
       
       this.searchText = searchText;
@@ -59,11 +60,12 @@ export default {
           console.log('Errore : ' + error);
         });
     },
+
+    // funzione per cercare le serie richieste dall'utente e aggiungerle in un array che poi verrà stampato
     searchSerie(searchText){
 
       this.searchText = searchText;
       
-
       axios
         .get(this.apiURLSerie, {
           params: {

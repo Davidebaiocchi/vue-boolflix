@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="Cards">
-        <div class="container" v-if="filmArray.lenght !==0 && serieArray.lenght !==0">
+        <div class="container">
           <CardSerieTv 
           v-for="(serie, index) in serieArray"
           :key="index"

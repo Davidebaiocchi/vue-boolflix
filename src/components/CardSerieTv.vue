@@ -1,13 +1,19 @@
 <template>
+
   <div class="card">
+
+    <!-- copertina card -->
     <div class="cover">
       <img v-if="serie.poster_path == null" src="@/assets/img/images.jpg" alt="cover">
       <img v-else :src="imgBaseURL + imgBaseDimension + serie.poster_path" alt="">
     </div>
+
+    <!-- descrizione card -->
     <div class="description">
       <span class="titolo"> {{ serie.name }} </span>  <br>
       <span v-if="serie.name !== serie.original_name"  class="titolo-or"> '{{ serie.original_name }}' </span> <br>
       <span class="lingua"><img :src="getImgUrl(language)" v-bind:alt="language">  
+      
       <!-- stelle piene -->
       <i class="piene fas fa-star"
       v-for="(star, index) in stars(serie.vote_average)" :key="index"
@@ -22,6 +28,8 @@
         <span v-if="serie.overview === ''"></span>
         <span v-else> {{ serie.overview }} </span>
       </div>
+      <!-- fine descrizione card -->
+
     </div>
   </div>
 </template>
@@ -36,6 +44,7 @@ export default {
     }
   },
   methods : {
+    // funzione per prendere le copertine delle card
     getImgUrl(pic) {
       try {
         let fileName = require('../assets/img/' + pic + '.png');
@@ -45,9 +54,11 @@ export default {
         return 'none'
       }  
     },
+    // funzione per le stelle gialle
     stars(vote){
       return Math.round(vote / 2)
     },
+    // funzione per le stelle vuote
     whiteStars(vote){
       return 5 - (Math.round(vote / 2))
     }
